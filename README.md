@@ -1,5 +1,5 @@
 # BioCycleMR
-![a31e0e4bff385a3b36836e23582870e](https://github.com/DaXuanGarden/BioCycleMR/assets/140375963/f421447f-ccf5-4b3f-a384-b5ea677083a3)
+![BioCycleMR_logo](https://github.com/DaXuanGarden/BioCycleMR/assets/140375963/f421447f-ccf5-4b3f-a384-b5ea677083a3){width=200px height=150px}
 
 
 ## Introduction
