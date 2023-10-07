@@ -8,9 +8,9 @@
 
 ## Creators
 
-- **Wang Xuanyu**: An undergraduate student majoring in Traditional Chinese Medicine from the 2021 cohort at Tianjin University of Traditional Chinese Medicine. With a keen interest in the convergence of age-old medical wisdom and contemporary genetic research, Wang Xuanyu plays an integral role in shaping the essence of `BioCycleMR`.
+- **Xuanyu Wang**: An undergraduate student majoring in Traditional Chinese Medicine from the 2021 cohort at Tianjin University of Traditional Chinese Medicine. With a keen interest in the convergence of age-old medical wisdom and contemporary genetic research, Xuanyu Wang plays an integral role in shaping the essence of `BioCycleMR`.
 
-- **Zhang Yangyang**: An undergraduate student of the 2021 batch majoring in Clinical Medicine at Fudan University. Zhang's expertise and enthusiasm for eQTL and immune cell data have added depth to the capabilities of the package.
+- **Yangyang Zhang**: An undergraduate student of the 2021 batch majoring in Clinical Medicine at Fudan University. Zhang's expertise and enthusiasm for eQTL and immune cell data have added depth to the capabilities of the package.
 
 ## Key Features
 
@@ -23,7 +23,7 @@
 
 ### Efficient GWAS Data Integration
 
-- **Automated Data Fetching**: Leverage automated mechanisms to efficiently gather pertinent GWAS data IDs, minimizing manual intervention and maximizing accuracy.
+- **Automated Data Fetching**: Leverage automated mechanisms to gather pertinent GWAS data IDs efficiently, minimizing manual intervention and maximizing accuracy.
 - **Iterative Loop Analyses**: A unique feature facilitating repeated cycles of MR analysis, ensuring comprehensive insights.
 
 ### Connectivity with Bioinformatics and Single-Cell Data
@@ -60,6 +60,6 @@ Open communication channels and collaborations are the lifeblood of `BioCycleMR`
 
 For discussions, feedback, or potential collaborations:
 
-📧 [daxuan111000@163.com](mailto:daxuan111000@163.com)
-📧 [Yangyang Zhang](pigudogzyy@gmail.com)
+📧 [Xuanyu Wang](mailto:daxuan111000@163.com)
+📧 [Yangyang Zhang (pigudogzyy)](pigudogzyy@gmail.com)
 
