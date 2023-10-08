@@ -6,11 +6,6 @@
 
 `BioCycleMR` is an R package crafted with the objective of enhancing Mendelian Randomization (MR) analysis in the field of biomedical research. Designed to integrate diverse exposure data types, the tool is an amalgamation of traditional medicinal insights and the dynamism of modern genomics.
 
-## Creators
-
-- **Xuanyu Wang**: An undergraduate student majoring in Traditional Chinese Medicine from the 2021 cohort at Tianjin University of Traditional Chinese Medicine. With a keen interest in the convergence of age-old medical wisdom and contemporary genetic research, Xuanyu Wang plays an integral role in shaping the essence of `BioCycleMR`.
-
-- **Yangyang Zhang**: An undergraduate student of the 2021 batch majoring in Clinical Medicine at Fudan University. Zhang's expertise and enthusiasm for eQTL and immune cell data have added depth to the capabilities of the package.
 
 ## Key Features
 
@@ -46,6 +41,16 @@
    print(results)
    ```
 
+3. **Immune cells**
+```r
+data(immune)
+outcome_ids = c("finn-b-N14_ENDOMETRIOSIS","finn-b-N14_FEMALEINFERT")
+outcome_ids=as.vector(outcome_ids)
+for (outcome_id in outcome_ids){
+  write.table(analyze_outcome_immune(outcome_id=outcome_id,max_retries = 50),file = paste0(outcome_id,".txt"),sep = "\t",quote = F,row.names = F)
+}
+```
+
 For an in-depth understanding and advanced functionalities, always refer to the package's extensive documentation, which elucidates various modules, functions, and their respective use cases.
 
 ## Future Developments
@@ -55,6 +60,12 @@ For an in-depth understanding and advanced functionalities, always refer to the 
 ## Community Engagement and Feedback
 
 Open communication channels and collaborations are the lifeblood of `BioCycleMR`. The creators earnestly invite the community to pitch in, share insights, suggest enhancements, or even critique – every interaction is a step towards refinement.
+
+## Creators
+
+- **Xuanyu Wang**: An undergraduate student majoring in Traditional Chinese Medicine from the 2021 cohort at Tianjin University of Traditional Chinese Medicine. With a keen interest in the convergence of age-old medical wisdom and contemporary genetic research, Xuanyu Wang plays an integral role in shaping the essence of `BioCycleMR`.
+
+- **Yangyang Zhang**: An undergraduate student of the 2021 batch majoring in Clinical Medicine at Fudan University. Zhang's expertise and enthusiasm for eQTL and immune cell data have added depth to the capabilities of the package.
 
 ## Contact
 
