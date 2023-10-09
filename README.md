@@ -49,6 +49,9 @@ outcome_ids=as.vector(outcome_ids)
 for (outcome_id in outcome_ids){
   write.table(analyze_outcome_immune(outcome_id=outcome_id,max_retries = 50),file = paste0(outcome_id,".txt"),sep = "\t",quote = F,row.names = F)
 }
+
+# you can check the results by code following:
+immune_total_check(exposure_id=exposure_id,outcome_name=outcome_name,outcome_source=outcome_source)
 ```
 
 For an in-depth understanding and advanced functionalities, always refer to the package's extensive documentation, which elucidates various modules, functions, and their respective use cases.

@@ -9,6 +9,9 @@ analyze_outcome_immune(outcome_id, max_retries = 50)
 \arguments{
 \item{max_retries}{}
 }
+\value{
+result
+}
 \description{
 Title: Immunce cells as exposure
 }
