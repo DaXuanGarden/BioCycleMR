@@ -18,16 +18,19 @@ analyze_outcome_immune <- function(outcome_id,max_retries=50) {
     retry_count = 0  # 初始化重试计数器
     success1 = FALSE  # 标志，表示是否成功连接并获得结果
     success2 = FALSE
+    print("extract exposure")
     while (retry_count < max_retries && !success1) {
       retry_count = retry_count + 1
 
       tryCatch({
         # 在这里执行您的连接和分析操作
         # 如果成功，将结果存储在 result_or 中，并将 success 标志设置为 TRUE
-        expo_rt <- extract_instruments(outcomes = i, p1 = 1e-5,
-                                       clump = T, p2 = 1e-5,
+        expo_rt <- extract_instruments(outcomes = i, p1 = 5e-6,
+                                       clump = T,
+                                       # p2 = 1e-5,
                                        r2 = 0.001, kb = 10000,access_token=NULL)
         success1 = TRUE  # 成功获得结果
+        print("sucess1: exposure")
       },
       error = function(e) {
         # 捕获到错误时的操作
@@ -42,6 +45,7 @@ analyze_outcome_immune <- function(outcome_id,max_retries=50) {
         }
       })
     }
+    print("extract outcome")
     while (retry_count < max_retries && !success2) {
       retry_count = retry_count + 1
       tryCatch({
@@ -53,21 +57,8 @@ analyze_outcome_immune <- function(outcome_id,max_retries=50) {
 
         mr_result <- mr(harm_rt,method_list = c("mr_wald_ratio","mr_ivw"))
         print(mr_result)
-        # result_or <- generate_odds_ratios(mr_result)
-
-        # 如果 p 值小于 0.05，则将结果添加到 result 数据框中
-        table1 <- mr_result %>%
-          filter(pval < 0.05,
-                 method %in% c("Wald ratio","Inverse variance weighted"))
-
-        table1 <- table1 %>%
-          generate_odds_ratios()%>%
-          mutate(`OR (95% CI)` = sprintf("%.2f (%.2f, %.2f)",or,or_lci95, or_uci95),
-                 `P value` = scales::scientific(pval))
-
-        result <- rbind(result, table1)
-
         success2 = TRUE  # 成功获得结果
+        print("sucess2: outcome")
       }, error = function(e) {
         # 捕获到错误时的操作
         # 输出错误信息
@@ -81,7 +72,27 @@ analyze_outcome_immune <- function(outcome_id,max_retries=50) {
         }
       })
     }
+    # result_or <- generate_odds_ratios(mr_result)
+    if (dim(mr_result)[1] == 0){
+      # when 1 snp and mr_keep=False
+      print("no snp for MR")
+    }else{
+      # 如果 p 值小于 0.05，则将结果添加到 result 数据框中
+      table1 <- mr_result %>%
+        filter(pval < 0.05,
+               method %in% c("Wald ratio","Inverse variance weighted"))
+
+      table1 <- table1 %>%
+        generate_odds_ratios()%>%
+        mutate(`OR (95% CI)` = sprintf("%.2f (%.2f, %.2f)",or,or_lci95, or_uci95),
+               `P value` = scales::scientific(pval))
+
+      result <- rbind(result, table1)
+    }
+
+
   }
+
   cat("Finished:", outcome_id, "\n")
   return(result)
 
