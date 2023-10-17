@@ -1,60 +1,110 @@
 # BioCycleMR
-![BioCycleMR_logo](https://github.com/DaXuanGarden/BioCycleMR/assets/140375963/f421447f-ccf5-4b3f-a384-b5ea677083a3)
 
+![BioCycleMR_logo](https://github.com/DaXuanGarden/BioCycleMR/assets/140375963/f421447f-ccf5-4b3f-a384-b5ea677083a3)
 
 ## Introduction
 
 `BioCycleMR` is an R package crafted with the objective of enhancing Mendelian Randomization (MR) analysis in the field of biomedical research. Designed to integrate diverse exposure data types, the tool is an amalgamation of traditional medicinal insights and the dynamism of modern genomics.
 
-
 ## Key Features
 
 ### Comprehensive Exposure Data Integration
 
-- **eQTL**: Seamlessly integrate expression quantitative trait loci data to unveil the genetic intricacies behind gene expression variations.
-- **Immune Profiling**: Dive deep into the realm of immune cell data, highlighting potential associations and patterns crucial to disease research.
-- **pQTL**: Explore protein quantitative trait loci data, shedding light on protein-level genetic nuances.
-- **Inflammatory Markers & Gut Microbiota**: A dedicated module focusing on inflammatory factors and gut microbiota, revealing their complex interplay and implications on health.
+-   **eQTL**: Seamlessly integrate expression quantitative trait loci data to unveil the genetic intricacies behind gene expression variations.
+-   **Immune Profiling**: Dive deep into the realm of immune cell data, highlighting potential associations and patterns crucial to disease research.
+-   **pQTL**: Explore protein quantitative trait loci data, shedding light on protein-level genetic nuances.
+-   **Inflammatory Markers & Gut Microbiota**: A dedicated module focusing on inflammatory factors and gut microbiota, revealing their complex interplay and implications on health.
 
 ### Efficient GWAS Data Integration
 
-- **Automated Data Fetching**: Leverage automated mechanisms to gather pertinent GWAS data IDs efficiently, minimizing manual intervention and maximizing accuracy.
-- **Iterative Loop Analyses**: A unique feature facilitating repeated cycles of MR analysis, ensuring comprehensive insights.
+-   **Automated Data Fetching**: Leverage automated mechanisms to gather pertinent GWAS data IDs efficiently, minimizing manual intervention and maximizing accuracy.
+-   **Iterative Loop Analyses**: A unique feature facilitating repeated cycles of MR analysis, ensuring comprehensive insights.
 
 ### Connectivity with Bioinformatics and Single-Cell Data
 
-- **Bioinformatics Bridge**: A built-in framework designed to synchronize MR analyses with relevant bioinformatics datasets and tools.
-- **Single-Cell Target Exploration**: Stay ahead by integrating critical targets deduced from single-cell analyses, thus providing a multi-dimensional research perspective.
+-   **Bioinformatics Bridge**: A built-in framework designed to synchronize MR analyses with relevant bioinformatics datasets and tools.
+-   **Single-Cell Target Exploration**: Stay ahead by integrating critical targets deduced from single-cell analyses, thus providing a multi-dimensional research perspective.
 
 ## Installation and Usage
 
-1. **Installing the Package**:
-   ```r
-   install.packages("devtools")
-   devtools::install_github("DaXuanGarden/BioCycleMR")
-   ```
+### Installing the Package
 
-2. **Load and Commence**:
-   ```r
-   library(BioCycleMR)
-   results <- runBioCycleMR(your_exposure_data, your_outcome_data)
-   print(results)
-   ```
-
-3. **Immune cells**
-```r
-data(immune)
-outcome_ids = c("finn-b-N14_ENDOMETRIOSIS","finn-b-N14_FEMALEINFERT")
-outcome_ids=as.vector(outcome_ids)
-for (outcome_id in outcome_ids){
-  write.table(analyze_outcome_immune(outcome_id=outcome_id,max_retries = 50),file = paste0(outcome_id,".txt"),sep = "\t",quote = F,row.names = F)
-}
-
-# you can check the results by code following:
-immune_total_check(exposure_id=exposure_id,outcome_name=outcome_name,outcome_source=outcome_source)
+``` r
+install.packages("devtools")
+devtools::install_github("DaXuanGarden/BioCycleMR")
 ```
 
-For an in-depth understanding and advanced functionalities, always refer to the package's extensive documentation, which elucidates various modules, functions, and their respective use cases.
+### Load and Commence
+
+``` r
+library(BioCycleMR)
+results <- runBioCycleMR(your_exposure_data, your_outcome_data)
+print(results)
+```
+
+### Detailed Function Descriptions
+
+#### Immune cells
+
+![](test/BioCycleMR_immc_En.png){width="394"}
+
+1.  **Retrieve Data for 731 Immune Cells**
+
+    Fetch data for 731 immune cells. Choose between using preprocessed data or custom parameters.
+
+    ``` r
+    immc_data_preprocessed <- get_immc()
+    immc_data_custom <- get_immc(use_preprocessed = FALSE, p1 = 5e-5, mc_cores = 15)
+    ```
+
+2.  **Harmonize and Process FinnGen R9 Data**
+
+    Harmonizes the FinnGen R9 dataset.
+
+    ``` r
+    get_finn(finn_dir = "finn", save_dir = "finn_r", cores = 30)
+    ```
+
+3.  **Retrieve GWAS Datasets Using Keyword or ID**
+
+    Identify potential genetic instruments for MR analysis using keywords or IDs.
+
+    ``` r
+    get_gwas_id("Myocardial infarction")
+    get_gwas_id("finn-b-N14_ENDOMETRIOSIS")
+    ```
+
+4.  **Convert Local VCF File for Two-Sample MR Analysis**
+
+    Convert VCF files for MR studies.
+
+    ``` r
+    get_local("ieu-a-2.vcf.gz", "exposure")
+    ```
+
+5.  **Calculate F-values and MAF**
+
+    Estimate F-statistics and minor allele frequency for MR studies.
+
+    ``` r
+    result <- get_f_maf(dat_object = immu_cell_raw)
+    ```
+
+6.  **Complex Operations with `get_tsmr`**
+
+    Engage in intricate MR procedures.
+
+    ``` r
+    get_tsmr(immu_cell_f_select, finn_r_dir, cores = 64)
+    ```
+
+7.  **Compute Effect Size Estimates from .rda Files**
+
+    Derive effect size metrics from .rda files.
+
+    ``` r
+    get_effect("~/path_to_directory", immune_ref_data)
+    ```
 
 ## Future Developments
 
@@ -62,18 +112,18 @@ For an in-depth understanding and advanced functionalities, always refer to the 
 
 ## Community Engagement and Feedback
 
-Open communication channels and collaborations are the lifeblood of `BioCycleMR`. The creators earnestly invite the community to pitch in, share insights, suggest enhancements, or even critique – every interaction is a step towards refinement.
+Open communication channels and collaborations are the lifeblood of `BioCycleMR`. The creators earnestly invite the community to pitch in, share insights, suggest enhancements, or even critique -- every interaction is a step towards refinement.
 
 ## Creators
 
-- **Xuanyu Wang**: An undergraduate student majoring in Traditional Chinese Medicine from the 2021 cohort at Tianjin University of Traditional Chinese Medicine. With a keen interest in the convergence of age-old medical wisdom and contemporary genetic research, Xuanyu Wang plays an integral role in shaping the essence of `BioCycleMR`.
+- **Xuanyu Wang**: Xuanyu Wang, a 2021 undergraduate cohort from Tianjin University of Traditional Chinese Medicine, majors in Traditional Chinese Medicine with a special focus on Cardiology and Cardiovascular diseases. Xuanyu delves into the intricate interrelations between cardiovascular and cerebrovascular maladies, aiming to decipher the underlying genetic and molecular mechanisms linking these two critical systems. With a keen interest in marrying age-old medical wisdom with modern genetic research, Xuanyu Wang plays a pivotal role in molding the core of `BioCycleMR`.
 
-- **Yangyang Zhang**: An undergraduate student of the 2021 batch majoring in Clinical Medicine at Fudan University. Zhang's expertise and enthusiasm for eQTL and immune cell data have added depth to the capabilities of the package.
+- **Yangyang Zhang**: A part of the 2021 undergraduate batch, Yangyang Zhang is majoring in Clinical Medicine at Fudan University. His primary research interest lies in reproductive medicine. Zhang's endeavors encapsulate understanding the genetic underpinnings of fertility, delving into the molecular complexities of embryonic development, and probing the role of epigenetics in reproductive health. In addition, his work extends to exploring assisted reproductive technologies and their bearing on the wider realm of human health. Zhang's expertise and zeal for eQTL and immune cell data significantly bolster the capabilities of the package.
 
 ## Contact
 
 For discussions, feedback, or potential collaborations:
 
-📧 [Xuanyu Wang](mailto:daxuan111000@163.com)
-📧 [Yangyang Zhang (pigudogzyy)](pigudogzyy@gmail.com)
+📧 [Xuanyu Wang](mailto:daxuan111000@163.com) 📧 [Yangyang Zhang (pigudogzyy)](pigudogzyy@gmail.com)
 
+------------------------------------------------------------------------
