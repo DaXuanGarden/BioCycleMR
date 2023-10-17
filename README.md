@@ -125,5 +125,3 @@ Open communication channels and collaborations are the lifeblood of `BioCycleMR`
 For discussions, feedback, or potential collaborations:
 
 📧 [Xuanyu Wang](mailto:daxuan111000@163.com) 📧 [Yangyang Zhang (pigudogzyy)](pigudogzyy@gmail.com)
-
-------------------------------------------------------------------------
