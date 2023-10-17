@@ -1,15 +1,14 @@
 #' Title: Immunce cells as exposure
 #'
-#' @param outcome_id
-#' @param max_retries
+#' @param outcome_id A unique identifier for the outcome
+#' @param max_retries Maximum number of retries for the analysis
 #'
-#' @return result
+#' @return result The result of the analysis
 #' @export
 #'
 #' @examples
-#' for (outcome_id in outcome_ids){
-#' write.table(analyze_outcome_immune(outcome_id=outcome_id,max_retries = 50),file = paste0(outcome_id,".txt"),sep = "\t",quote = F,row.names = F)
-#' }
+#' analyze_outcome_immune(outcome_id = "some_id", max_retries = 50)
+
 analyze_outcome_immune <- function(outcome_id,max_retries=50) {
   cat("!!Immune cells: Analyzing outcome ", outcome_id, "\n")
   result = data.frame()
