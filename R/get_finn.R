@@ -47,5 +47,4 @@ get_finn <- function(finn_dir, save_dir = "finn_r", cores = 30) {
 
 # Usage Instructions:
 # 1. Ensure you have the required libraries (`data.table` and `parallel`) installed.
-# 2. Replace `"YourPackageName"` with the name of your R package (if you're using one).
-# 3. Call the function using the given example or by specifying the `finn_dir`, `save_dir`, and `cores` as needed.
+# 2. Call the function using the given example or by specifying the `finn_dir`, `save_dir`, and `cores` as needed.
