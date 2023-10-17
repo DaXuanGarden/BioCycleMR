@@ -33,11 +33,6 @@ get_immc <- function(use_preprocessed = TRUE, p1 = 1e-05, p2 = 5e-08, count_try_
     return(preprocessed_data)
   }
 
-  # 加载所需的库
-  library(tidyverse)
-  library(data.table)
-  library(TwoSampleMR)
-  library(rlist)
 
   # 从包内的数据加载imc731id
   imc731id <- readRDS(system.file("data", "imc731id_data.rda", package = "BioCycleMR"))

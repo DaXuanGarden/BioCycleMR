@@ -13,10 +13,6 @@
 #' @examples
 #' get_tsmr(immu_cell_f_select, finn_r_dir, cores = 64)
 #'
-library(tidyverse)
-library(data.table)
-library(TwoSampleMR)
-library(rlist)
 ivw_Speed <- function(dat,prop_var_explained = T,sample=NULL) {
   mr_res <- mr(dat,
                method_list =c("mr_wald_ratio","mr_ivw"))

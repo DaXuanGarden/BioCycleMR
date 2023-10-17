@@ -1,5 +1,7 @@
+rm(list=ls())
+gc()
 getwd()
-setwd("/home/data/t050446/DX_Package/DXMarkers")
+#setwd("D:\文档\GitHub\BioCycleMR")
 # Load the devtools package
 library(usethis)
 library(utils)
@@ -14,14 +16,14 @@ roxygen2::roxygenize()
 
 devtools::document()
 # Check the package
-# check()
+check()
 
 
 # 假设你的R包项目目录是"DXMarkers"，请将路径替换为你的实际路径
 getwd()
-setwd("/home/data/t050446/DX_Package/DXMarkers")
+#setwd("/home/data/t050446/DX_Package/DXMarkers")
 # 使用devtools包进行打包
-devtools::build("/home/data/t050446/DX_Package/DXMarkers")
+devtools::build("D:/文档/GitHub/BioCycleMR")
 library(devtools)
 devtools::install_local("/home/data/t050446/DX_Package/DXMarkers_1.0.tar.gz", dependencies = TRUE, upgrade = FALSE)
 

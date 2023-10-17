@@ -15,10 +15,6 @@
 #' @export
 get_finn <- function(finn_dir, save_dir = "finn_r", cores = 30) {
 
-  # Load necessary libraries and data
-  library(data.table)
-  library(parallel)
-
   finn_info <- load(system.file("data", "Finn_R9_data.rda", package = "BioCycleMR"))
 
   # Define the process_finn function
