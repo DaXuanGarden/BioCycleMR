@@ -7,16 +7,16 @@
 analyze_outcome_immune(outcome_id, max_retries = 50)
 }
 \arguments{
-\item{max_retries}{}
+\item{outcome_id}{A unique identifier for the outcome}
+
+\item{max_retries}{Maximum number of retries for the analysis}
 }
 \value{
-result
+result The result of the analysis
 }
 \description{
 Title: Immunce cells as exposure
 }
 \examples{
-for (outcome_id in outcome_ids){
-write.table(analyze_outcome_immune(outcome_id=outcome_id,max_retries = 50),file = paste0(outcome_id,".txt"),sep = "\t",quote = F,row.names = F)
-}
+analyze_outcome_immune(outcome_id = "some_id", max_retries = 50)
 }

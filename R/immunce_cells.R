@@ -99,13 +99,14 @@ analyze_outcome_immune <- function(outcome_id,max_retries=50) {
 
 #' Title immune_total_check
 #'
-#' @param exposure_id
-#' @param outcome_name
-#' @param outcome_source
+#' @param exposure_id A unique identifier for the exposure
+#' @param outcome_name The name of the outcome
+#' @param outcome_source The source of the outcome
 #'
 #' @export
 #'
-#' @exampleslibrary(dplyr)
+#' @examples
+#' library(dplyr)
 #' library(TwoSampleMR)
 #' #https://gwas.mrcieu.ac.uk/datasets/
 #' outcome_name = "finn-b-N14_ENDOMETRIOSIS"

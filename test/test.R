@@ -12,6 +12,13 @@ library(devtools)
 # 在R控制台中运行以下命令
 library(roxygen2)
 roxygen2::roxygenize()
+library(remotes)
+install_github("MRCIEU/TwoSampleMR")
+devtools::install_github("renkun-ken/rlist")
+if (!requireNamespace("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+BiocManager::install("VariantAnnotation")
+devtools::install_github("MRCIEU/gwasglue")
 
 
 devtools::document()
@@ -50,27 +57,4 @@ build_vignettes()
 
 # 查看使用说明书
 browseVignettes("DXMarkers")
-######图片配色选择######
-if(!require(paletteer))install.packages("paletteer")
-if(!require(scico))install.packages('scico')
-if(!require(nord))install.packages('nord')
-library(paletteer)
-paletteer_c("scico::berlin", n = 50)
-paletteer_d("RColorBrewer::Paired")
-paletteer_dynamic("cartography::green.pal", 5)
-paletteer_d("Polychrome::kelly", n = 22)
-paletteer_d("pals::kelly")
-paletteer_d("palettesForR::Browns")
 
-#remotes::install_github("mtennekes/cols4all")
-#install.packages("colorblindcheck")
-library(cols4all)
-#交互面板
-c4a_gui()
-#可以通过函数提取配色(色板名称+所需颜色数量)
-mycolor <-c4a("muted",9)
-######SCP配色######
-library(RColorBrewer)
-getPalette = colorRampPalette(brewer.pal(12, "Paired"))
-mycolors <- getPalette(60)
-mycolors

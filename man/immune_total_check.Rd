@@ -7,8 +7,25 @@
 immune_total_check(exposure_id, outcome_name, outcome_source)
 }
 \arguments{
-\item{outcome_source}{}
+\item{exposure_id}{A unique identifier for the exposure}
+
+\item{outcome_name}{The name of the outcome}
+
+\item{outcome_source}{The source of the outcome}
 }
 \description{
 Title immune_total_check
+}
+\examples{
+library(dplyr)
+library(TwoSampleMR)
+#https://gwas.mrcieu.ac.uk/datasets/
+outcome_name = "finn-b-N14_ENDOMETRIOSIS"
+outcome_source = "finn"
+iddf=read.table(paste0(outcome_name,".txt"),header = T,sep = "\t")
+# 暴露数据的SNP，工具变量
+exposure_id=iddf$id.exposure
+immune_total_check(exposure_id=exposure_id,
+outcome_name=outcome_name,
+outcome_source=outcome_source)
 }
