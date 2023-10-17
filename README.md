@@ -68,7 +68,7 @@ print(results)
     Estimate F-statistics and minor allele frequency for MR studies.
 
     ``` r
-    result <- get_f_maf(dat_object = immu_cell_raw)
+    immu_cell_f_select <- get_f_maf(dat_object = immu_cell_raw)
     ```
 
 6.  **Complex Operations with `get_tsmr`**
