@@ -1,12 +1,23 @@
 Package: BioCycleMR
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
-Authors@R: 
-    person("Yangyang", "Zhang", , "[pigudogzyy@gamil.com]", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Type: Package
+Title: Enhancing Mendelian Randomization Analysis in Biomedical Research
+Version: 0.1.0
+Authors@R: c(
+    person("Xuanyu", "Wang", email = "daxuan111000@163.com", 
+           role = c("cre", "aut"), 
+           comment = "An undergraduate student majoring in Traditional Chinese Medicine from the 2021 cohort at Tianjin University of Traditional Chinese Medicine. With a keen interest in the convergence of age-old medical wisdom and contemporary genetic research, Xuanyu Wang plays an integral role in shaping the essence of BioCycleMR. *"),
+    person("Yangyang", "Zhang", email = "pigudogzyy@gmail.com", 
+           role = c("cre", "aut"), 
+           comment = "An undergraduate student of the 2021 batch majoring in Clinical Medicine at Fudan University. Zhang's expertise and enthusiasm for eQTL and immune cell data have added depth to the capabilities of the package. *")
+)
+Description: BioCycleMR is an R package crafted with the objective of enhancing Mendelian Randomization (MR) analysis in the field of biomedical research. Designed to integrate diverse exposure data types, the tool is an amalgamation of traditional medicinal insights and the dynamism of modern genomics.
+License: GPL-3
 Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+LazyData: true
+Imports: 
+    tidyverse,
+    data.table,
+    TwoSampleMR,
+    rlist,
+    parallel
+RoxygenNote: 7.1.0
