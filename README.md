@@ -6,25 +6,6 @@
 
 `BioCycleMR` is an R package crafted with the objective of enhancing Mendelian Randomization (MR) analysis in the field of biomedical research. Designed to integrate diverse exposure data types, the tool is an amalgamation of traditional medicinal insights and the dynamism of modern genomics.
 
-## Key Features
-
-### Comprehensive Exposure Data Integration
-
--   **eQTL**: Seamlessly integrate expression quantitative trait loci data to unveil the genetic intricacies behind gene expression variations.
--   **Immune Profiling**: Dive deep into the realm of immune cell data, highlighting potential associations and patterns crucial to disease research.
--   **pQTL**: Explore protein quantitative trait loci data, shedding light on protein-level genetic nuances.
--   **Inflammatory Markers & Gut Microbiota**: A dedicated module focusing on inflammatory factors and gut microbiota, revealing their complex interplay and implications on health.
-
-### Efficient GWAS Data Integration
-
--   **Automated Data Fetching**: Leverage automated mechanisms to gather pertinent GWAS data IDs efficiently, minimizing manual intervention and maximizing accuracy.
--   **Iterative Loop Analyses**: A unique feature facilitating repeated cycles of MR analysis, ensuring comprehensive insights.
-
-### Connectivity with Bioinformatics and Single-Cell Data
-
--   **Bioinformatics Bridge**: A built-in framework designed to synchronize MR analyses with relevant bioinformatics datasets and tools.
--   **Single-Cell Target Exploration**: Stay ahead by integrating critical targets deduced from single-cell analyses, thus providing a multi-dimensional research perspective.
-
 ## Installation and Usage
 
 ### Installing the Package
