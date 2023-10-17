@@ -46,7 +46,7 @@ print(results)
 
 #### Immune cells
 
-![](test/BioCycleMR_immc_En.png){width="394"}
+![](test/BioCycleMR_immc_En.png)
 
 1.  **Retrieve Data for 731 Immune Cells**
 
