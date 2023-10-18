@@ -13,7 +13,9 @@
 #' get_finn(finn_dir = "finn", save_dir = "finn_r", cores = 30)
 #' }
 #' @export
-get_finn <- function(finn_dir, save_dir = "finn_r", cores = 30) {
+get_finn <- function(finn_dir,
+                     save_dir = "finn_r",
+                     cores = 30) {
 
   finn_info <- load(system.file("data", "Finn_R9_data.rda", package = "BioCycleMR"))
 

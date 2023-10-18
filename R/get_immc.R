@@ -25,7 +25,13 @@
 #' immc_data_custom <- get_immc(use_preprocessed = FALSE, p1 = 5e-5, mc_cores = 15)
 #' }
 
-get_immc <- function(use_preprocessed = TRUE, p1 = 1e-05, p2 = 5e-08, count_try_max = 50, r2 = 0.001, kb = 10000, mc_cores = 30) {
+get_immc <- function(use_preprocessed = TRUE,
+                     p1 = 1e-05,
+                     p2 = 5e-08,
+                     count_try_max = 50,
+                     r2 = 0.001,
+                     kb = 10000,
+                     mc_cores = 30) {
 
   if (use_preprocessed) {
     # Load preprocessed data
@@ -34,7 +40,8 @@ get_immc <- function(use_preprocessed = TRUE, p1 = 1e-05, p2 = 5e-08, count_try_
   }
 
 
-  # 从包内的数据加载imc731id
+  # Load the imc731id from the data in the package
+  # which contain the detail of immune trait
   imc731id <- readRDS(system.file("data", "imc731id_data.rda", package = "BioCycleMR"))
 
   online_id <- function(id, p1 = 1e-05, p2 = 5e-08, count_try_max = 50, r2 = 0.001, kb = 10000) {

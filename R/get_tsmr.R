@@ -1,19 +1,17 @@
-#' get_tsmr function
+
+#' Title ivw_Speed
 #'
-#' This function is intended to be used as a part of BioCycleMR package.
-#' It performs multiple complex operations on the input data.
+#' @param dat
+#' @param prop_var_explained
+#' @param sample
 #'
-#' @param immu_cell_f_select Input exposure data, expected to be a list of data frames.
-#' @param finn_r_dir Directory containing .rda files for each outcome.
-#' @param cores Number of cores to use for parallel operations. Default is 64.
-#'
-#' @return This function does not return anything but creates multiple directories, .rda and .csv files as a part of its operation.
+#' @return mr_res
 #' @export
 #'
 #' @examples
-#' get_tsmr(immu_cell_f_select, finn_r_dir, cores = 64)
-#'
-ivw_Speed <- function(dat,prop_var_explained = T,sample=NULL) {
+ivw_Speed <- function(dat,
+                      prop_var_explained = T,
+                      sample=NULL) {
   mr_res <- mr(dat,
                method_list =c("mr_wald_ratio","mr_ivw"))
   if (is.null(sample) || is.na(sample)) {
@@ -37,6 +35,16 @@ ivw_Speed <- function(dat,prop_var_explained = T,sample=NULL) {
 
   return(mr_res)
 }
+#' Title mr_Speed
+#'
+#' @param dat
+#' @param prop_var_explained
+#' @param sample
+#'
+#' @return
+#' @export
+#'
+#' @examples
 mr_Speed <- function(dat = harmonised_dat, prop_var_explained = T,sample=NULL)
 {
   mr_res <- mr(dat)
@@ -65,6 +73,16 @@ Presso_Speed <- function(dat) {
   return(res)
 }
 
+#' Title FDR_correct_immune
+#'
+#' @param dat
+#' @param sample
+#' @param outcome_id
+#'
+#' @return
+#' @export
+#'
+#' @examples
 FDR_correct_immune <- function(dat=iddf,sample=731,outcome_id){
   if(is.null(dat$pval[1])==T || is.na(dat$pval[1])==T){print("数据不包含pvalue，无法计算FDR")
     return(dat)
@@ -89,6 +107,16 @@ FDR_correct_immune <- function(dat=iddf,sample=731,outcome_id){
     return(data_sorted)
   }
 }
+#' Title p.adjust
+#'
+#' @param p
+#' @param method
+#' @param n
+#'
+#' @return
+#' @export
+#'
+#' @examples
 p.adjust <- function(p, method = p.adjust.methods, n = length(p))
 {
   ## Methods 'Hommel', 'BH', 'BY' and speed improvements
@@ -154,8 +182,24 @@ p.adjust <- function(p, method = p.adjust.methods, n = length(p))
            none = p)
   p0
 }
-
-get_tsmr <- function(immu_cell_f_select, finn_r_dir, cores = 64) {
+#' get_tsmr function
+#'
+#' This function is intended to be used as a part of BioCycleMR package.
+#' It performs multiple complex operations on the input data.
+#'
+#' @param immu_cell_f_select Input exposure data, expected to be a list of data frames.
+#' @param finn_r_dir Directory containing .rda files for each outcome.
+#' @param cores Number of cores to use for parallel operations. Default is 64.
+#'
+#' @return This function does not return anything but creates multiple directories, .rda and .csv files as a part of its operation.
+#' @export
+#'
+#' @examples
+#' get_tsmr(immu_cell_f_select, finn_r_dir, cores = 64)
+#'
+get_tsmr <- function(immu_cell_f_select,
+                     finn_r_dir,
+                     cores = 64) {
   # Combine all exposure data frames into one
   exposure_dat = do.call(rbind, immu_cell_f_select)
 
@@ -232,6 +276,9 @@ get_tsmr <- function(immu_cell_f_select, finn_r_dir, cores = 64) {
     cat("run mr for ",outcome_name,"\n")
     list_mr = parallel::mclapply(dataList, mr_Speed, mc.cores = 32)
     res_df <- do.call(rbind, list_mr)
+    res_df <- res_df %>%
+      generate_odds_ratios() %>%
+      mutate(`OR (95% CI)` = sprintf("%.2f (%.2f, %.2f)",or,or_lci95, or_uci95))
     save(list_mr,file = paste0(outcome_name,"/mr.rda"))
     write.csv(res_df, file=paste0(outcome_name,"/mr.csv"), row.names=F)
 

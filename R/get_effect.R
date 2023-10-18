@@ -29,6 +29,15 @@ get_effect <- function(directory, immune_ref) {
   process_outcomes(finn_name_list, immune_ref)
 }
 
+#' Title
+#'
+#' @param finn_name_list
+#' @param immune_ref
+#'
+#' @return
+#' @export
+#'
+#' @examples
 process_outcomes <- function(finn_name_list, immune_ref) {
   effect_list = list()
 
