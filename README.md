@@ -35,11 +35,11 @@ print(results)
     ``` r
     immc_data_preprocessed <- get_immc(use_preprocessed = TRUE)
     immc_data_custom <- get_immc(use_preprocessed = FALSE, 
-		     p1 = 1e-05, 
-                     p2 = 5e-08, 
-                     r2 = 0.001, 
-                     kb = 10000, 
-                     mc_cores = 10)
+								 p1 = 1e-05, 
+								 p2 = 5e-08, 
+								 r2 = 0.001, 
+								 kb = 10000, 
+								 mc_cores = 10)
     ```
 
 2.  **Preprocess FinnGen R9 Data**
