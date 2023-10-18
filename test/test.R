@@ -12,7 +12,7 @@ library(devtools)
 # 在R控制台中运行以下命令
 library(roxygen2)
 roxygen2::roxygenize()
-library(remotes)
+#library(remotes)
 #install_github("MRCIEU/TwoSampleMR")
 #devtools::install_github("renkun-ken/rlist")
 BiocManager::install("VariantAnnotation")
