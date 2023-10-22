@@ -36,8 +36,8 @@ get_finn <- function(finn_dir = "finn", save_dir = "finn_r", cores = 30) {
                                          pval_col = "pval", gene_col = "nearest_genes", chr_col = "#chrom",
                                          pos_col = "pos")
 
-    # 3. 提取trait相关的行信息
-    trait_row <- finn_info[grepl(trait_basename, finn_info$path_https),]
+    # 3. 提取trait相关的行信息，精准匹配
+    trait_row <- finn_info[grepl(paste0("\\b", trait_basename, "\\b"), finn_info$path_https),]
     if (nrow(trait_row) == 0) {
       stop(paste("Couldn't find phenotype details for:", trait_basename))
     }
