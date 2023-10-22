@@ -13,43 +13,55 @@
 #' get_finn(finn_dir = "finn", save_dir = "finn_r", cores = 30)
 #' }
 #' @export
-get_finn <- function(finn_dir,
-                     save_dir = "finn_r",
-                     cores = 30) {
+
+get_finn <- function(finn_dir = "finn", save_dir = "finn_r", cores = 30) {
+  # 加载内置数据
   data("Finn_R9_data")
-  #finn_info <- finn_info
+  finn_info <- finn_info
 
-  # Define the process_finn function
+  # 定义逐文件处理的子函数
   process_finn <- function(trait) {
-
+    # 1. 读取数据文件
     finn <- data.table::fread(file = trait, data.table = F)
 
-    finndata <- TwoSampleMR::format_data(finn, type = 'outcome', snp_col = "rsids", beta_col = "beta", se_col = "sebeta",
-                            eaf_col = "af_alt", effect_allele_col = "alt", other_allele_col = "ref",
-                            pval_col = "pval", gene_col = "nearest_genes", chr_col = "#chrom",
-                            pos_col = "pos")
-    trait = gsub(finn_dir,"",trait)
-    trait_row <- finn_info[grepl(trait, finn_info$path_https),]
+    # 删除重复的SNPs，保留p值最小的
+    finn <- finn[order(finn$pval),]
+    finn <- finn[!duplicated(finn$rsids), ]
 
+    # 2. 格式化数据
+    trait_basename <- sub(paste0(finn_dir, "/"), "", trait)  # 移除文件夹名称
+    trait_basename <- sub("\\.gz", "", trait_basename)  # 移除.gz后缀
+
+    finndata <- TwoSampleMR::format_data(finn, type = 'outcome', snp_col = "rsids", beta_col = "beta", se_col = "sebeta",
+                                         eaf_col = "af_alt", effect_allele_col = "alt", other_allele_col = "ref",
+                                         pval_col = "pval", gene_col = "nearest_genes", chr_col = "#chrom",
+                                         pos_col = "pos")
+
+    # 3. 提取trait相关的行信息
+    trait_row <- finn_info[grepl(trait_basename, finn_info$path_https),]
+    if (nrow(trait_row) == 0) {
+      stop(paste("Couldn't find phenotype details for:", trait_basename))
+    }
+
+    # 4. 更新finndata的列数据
     finndata$ncase.outcome <- trait_row$num_cases
     finndata$ncontrol.outcome <- trait_row$num_controls
     finndata$samplesize.outcome <- trait_row$num_cases + trait_row$num_controls
 
+    # 5. 更新finndata的outcome列
     outcome <- trait_row$name
     finndata$outcome <- outcome
-    trait_file_name = sub("\\.gz", "", trait)
 
-    # Save the data
-    save(finndata, file = paste0(save_dir, "/", "finndataR9_", trait_file_name, ".rda"))
-    cat("Finished:", trait_file_name, "\n")
+    # 6. 保存数据
+    save(finndata, file = paste0(save_dir, "/", "finndataR9_", trait_basename, ".rda"))
+
+    # 7. 输出完成信息
+    cat("Finished:", trait_basename, "\n")
   }
+
+  # 获取文件列表
   finn_list <- list.files(finn_dir, pattern = "\\.gz$", full.names = TRUE, recursive = FALSE)
-  print(finn_list)  # Add this line
+
+  # 使用并行处理文件列表
   parallel::mclapply(finn_list, process_finn, mc.cores = cores)
-
 }
-
-
-# Usage Instructions:
-# 1. Ensure you have the required libraries (`data.table` and `parallel`) installed.
-# 2. Call the function using the given example or by specifying the `finn_dir`, `save_dir`, and `cores` as needed.
