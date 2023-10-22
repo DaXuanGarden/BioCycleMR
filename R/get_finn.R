@@ -17,7 +17,7 @@ get_finn <- function(finn_dir,
                      save_dir = "finn_r",
                      cores = 30) {
 
-  finn_info <- load(system.file("data", "Finn_R9_data.rda", package = "BioCycleMR"))
+  finn_info <- finn_info
 
   # Define the process_finn function
   process_finn <- function(trait) {
