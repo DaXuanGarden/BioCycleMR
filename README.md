@@ -27,11 +27,11 @@ print(results)
 
 #### Immune cells
 
-![](test/BioCycleMR_immc_En.png)
+![](README/BioCycleMR_immc_En.png)
 
 1.  **Retrieve Data for 731 Immune Cells**
 
-    Fetch data for 731 immune cells. Choose between using preprocessed data or custom parameters (We have already prepared the results using the built-in default parameters `p1 = 1e-05,`). 
+    Obtain data for 731 immune cells. Choose to use preprocessed data or customized parameters (we have used the built-in default parameter `p1 = 1e-05`). The network problem can be solved well using this function, where we use the parameter `count_try_max` to adjust the maximum number of network attempts
     ``` r
     immc_data_preprocessed <- get_immc(use_preprocessed = TRUE)
     immc_data_custom <- get_immc(use_preprocessed = FALSE, 
@@ -41,6 +41,12 @@ print(results)
 								 kb = 10000, 
 								 mc_cores = 10)
     ```
+
+	In order to avoid the problem of poor network of some users, we have been prepared to mess with the exposure data of the immunophenotypes with `p=1e-5` and `p=5e-6`
+	```r
+	data("immune_cell_raw1e5")
+	data("immune_cell_raw5e6")
+	```
 
 2.  **Preprocess FinnGen R9 Data**
 
