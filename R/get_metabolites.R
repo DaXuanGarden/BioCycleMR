@@ -30,7 +30,7 @@ get_metabolites <- function(use_preprocessed = TRUE, out_dir = "metabolitis/",
   }
 
   # Load the index from the rda file
-  load("metabolitis_id.rda"))
+  load("metabolitis_id.rda")
 
   clump_id <- function(exposure_dat, clump_kb, clump_r2, count_try_max) {
     count_try <- 0
