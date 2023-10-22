@@ -16,6 +16,7 @@
 get_finn <- function(finn_dir,
                      save_dir = "finn_r",
                      cores = 30) {
+  library(parallel)
   data("Finn_R9_data")
   finn_info <- finn_info
 
