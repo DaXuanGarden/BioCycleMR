@@ -21,6 +21,14 @@
 #' @author [Author's Name]
 #'
 #' @export
+create_ids <- function(x)
+{
+  a <- as.factor(x)
+  levels(a) <- random_string(length(levels(a)))
+  a <- as.character(a)
+  return(a)
+}
+
 format_data <- function (dat, type = "exposure", snps = NULL, header = TRUE,
                          phenotype_col = "Phenotype", snp_col = "SNP", beta_col = "beta",
                          se_col = "se", eaf_col = "eaf", effect_allele_col = "effect_allele",
@@ -288,11 +296,4 @@ format_data <- function (dat, type = "exposure", snps = NULL, header = TRUE,
   names(dat) <- gsub("outcome", type, names(dat))
   rownames(dat) <- NULL
   return(dat)
-}
-create_ids <- function(x)
-{
-  a <- as.factor(x)
-  levels(a) <- random_string(length(levels(a)))
-  a <- as.character(a)
-  return(a)
 }
