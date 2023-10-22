@@ -289,3 +289,10 @@ format_data <- function (dat, type = "exposure", snps = NULL, header = TRUE,
   rownames(dat) <- NULL
   return(dat)
 }
+create_ids <- function(x)
+{
+  a <- as.factor(x)
+  levels(a) <- random_string(length(levels(a)))
+  a <- as.character(a)
+  return(a)
+}

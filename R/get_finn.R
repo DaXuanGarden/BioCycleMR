@@ -48,6 +48,13 @@ get_finn <- function(finn_dir,
   parallel::mclapply(finn_list, process_finn, mc.cores = cores)
 
 }
+create_ids <- function(x)
+{
+  a <- as.factor(x)
+  levels(a) <- random_string(length(levels(a)))
+  a <- as.character(a)
+  return(a)
+}
 
 # Usage Instructions:
 # 1. Ensure you have the required libraries (`data.table` and `parallel`) installed.
