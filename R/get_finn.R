@@ -17,7 +17,7 @@ get_finn <- function(finn_dir,
                      save_dir = "finn_r",
                      cores = 30) {
   data("Finn_R9_data")
-  finn_info <- finn_info
+  #finn_info <- finn_info
 
   # Define the process_finn function
   process_finn <- function(trait) {

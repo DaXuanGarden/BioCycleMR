@@ -291,7 +291,7 @@ get_tsmr <- function(immu_cell_f_select,
     cat("harmonise data for ",outcome_name,"\n")
 
     # Harmonise data
-    dat<-harmonise_data(exposure_dat=exposure_dat, outcome_dat=outcome_dat)
+    dat<-TwoSampleMR::harmonise_data(exposure_dat=exposure_dat, outcome_dat=outcome_dat)
     har_true=dat[dat$mr_keep=="TRUE",]
     write.csv(har_true, file=paste0(outcome_name,"/SNP.csv"), row.names=F)
     save(har_true,file = paste0(outcome_name,"/SNP.rda"))
