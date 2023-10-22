@@ -17,7 +17,6 @@
 get_finn <- function(finn_dir = "finn", save_dir = "finn_r", cores = 30) {
   # 加载内置数据
   data("Finn_R9_data")
-  finn_info <- finn_info
 
   # 定义逐文件处理的子函数
   process_finn <- function(trait) {
