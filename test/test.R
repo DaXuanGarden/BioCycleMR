@@ -45,7 +45,7 @@ DXMarkers_dotplots(scRNA, "~/SCINA_markers.csv", "~/DXMarkers")
 
 #######生成并查看说明书#####
 # 使用usethis包添加一个名为"my-vignette"的vignette
-usethis::use_vignette("DXMarkers")
+usethis::use_vignette("BioCycleMR")
 
 # Load devtools package
 library(devtools)
@@ -54,7 +54,7 @@ library(devtools)
 build_vignettes()
 
 # 查看使用说明书
-browseVignettes("DXMarkers")
+browseVignettes("BioCycleMR")
 ###内置数据---------------
 # 确保首先加载BioCycleMR包
 library(BioCycleMR)
