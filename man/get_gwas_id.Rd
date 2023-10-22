@@ -16,6 +16,8 @@ Save the analysis results of each matched outcome_id as a text file
 Use a keyword or ID to retrieve GWAS datasets, then analyze each matching outcome_id
 }
 \examples{
+\dontrun{
 get_gwas_id("Myocardial infarction")
 get_gwas_id("finn-b-N14_ENDOMETRIOSIS")
+}
 }

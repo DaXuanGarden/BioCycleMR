@@ -3,13 +3,15 @@
 #' @param input Can be a keyword, used to match trait in the GWAS dataset; or it can be an outcome_id
 #' @return Save the analysis results of each matched outcome_id as a text file
 #' @examples
+#' \dontrun{
 #' get_gwas_id("Myocardial infarction")
 #' get_gwas_id("finn-b-N14_ENDOMETRIOSIS")
+#' }
 #' @export
 get_gwas_id <- function(input) {
   # Load the built-in GWAS dataset list
-  available_datasets <- readRDS(system.file("data", "available_datasets.rda", package = "BioCycleMR"))
-
+  #load(system.file("data", "available_datasets.rda", package = "BioCycleMR"))
+  data("available_datasets")
   # Determine whether the input is a keyword or an outcome_id
   if (any(input == available_datasets$id)) { # input is outcome_id
     matched_datasets <- available_datasets[available_datasets$id == input, ]

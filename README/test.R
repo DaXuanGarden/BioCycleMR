@@ -15,17 +15,17 @@ roxygen2::roxygenize()
 #library(remotes)
 #install_github("MRCIEU/TwoSampleMR")
 #devtools::install_github("renkun-ken/rlist")
-BiocManager::install("VariantAnnotation")
-devtools::install_github("MRCIEU/gwasglue")
-
+#BiocManager::install("VariantAnnotation")
+# install.packages("remotes")
+#remotes::install_github("stephenslab/susieR")
+#devtools::install_github("mrcieu/gwasglue")
+#library(VariantAnnotation)
 
 devtools::document()
 # Check the package
+
 check()
 
-
-# 假设你的R包项目目录是"DXMarkers"，请将路径替换为你的实际路径
-getwd()
 #setwd("/home/data/t050446/DX_Package/DXMarkers")
 # 使用devtools包进行打包
 devtools::build("D:/文档/GitHub/BioCycleMR")
@@ -45,7 +45,7 @@ DXMarkers_dotplots(scRNA, "~/SCINA_markers.csv", "~/DXMarkers")
 
 #######生成并查看说明书#####
 # 使用usethis包添加一个名为"my-vignette"的vignette
-usethis::use_vignette("DXMarkers")
+usethis::use_vignette("BioCycleMR")
 
 # Load devtools package
 library(devtools)
@@ -54,5 +54,23 @@ library(devtools)
 build_vignettes()
 
 # 查看使用说明书
-browseVignettes("DXMarkers")
+browseVignettes("BioCycleMR")
+###内置数据---------------
+# 确保首先加载BioCycleMR包
+library(BioCycleMR)
+
+# 加载available_datasets.rda
+load(system.file("data", "available_datasets.rda", package = "BioCycleMR"))
+
+# 加载dx_immu_cell_raw_df.rda
+load(system.file("data", "dx_immu_cell_raw_df.rda", package = "BioCycleMR"))
+
+# 加载Finn_R9_data.rda
+load(system.file("data", "Finn_R9_data.rda", package = "BioCycleMR"))
+
+# 加载imc731id_data.rda
+load(system.file("data", "imc731id_data.rda", package = "BioCycleMR"))
+
+# 加载immunce.rda
+load(system.file("data", "immunce.rda", package = "BioCycleMR"))
 

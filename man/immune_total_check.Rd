@@ -17,6 +17,7 @@ immune_total_check(exposure_id, outcome_name, outcome_source)
 Title immune_total_check
 }
 \examples{
+\dontrun{
 library(dplyr)
 library(TwoSampleMR)
 #https://gwas.mrcieu.ac.uk/datasets/
@@ -28,4 +29,5 @@ exposure_id=iddf$id.exposure
 immune_total_check(exposure_id=exposure_id,
 outcome_name=outcome_name,
 outcome_source=outcome_source)
+}
 }

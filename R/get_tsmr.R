@@ -1,14 +1,31 @@
-
-#' Title ivw_Speed
+#' Perform IVW Speed Analysis
 #'
-#' @param dat
-#' @param prop_var_explained
-#' @param sample
+#' This function conducts an Inverse Variance Weighted (IVW) analysis on the provided dataset
+#' to estimate causal effects. The IVW method is a popular approach in Mendelian Randomization.
 #'
-#' @return mr_res
+#' @param dat A data frame containing the necessary variables for the IVW analysis.
+#' It should at least have columns for SNP, exposure effect size, exposure standard error,
+#' outcome effect size, and outcome standard error.
+#'
+#' @param prop_var_explained A logical value indicating whether to compute the proportion
+#' of variance explained by the instrumental variables. Default is TRUE.
+#'
+#' @param sample An optional sample data or criteria to subset the main `dat` data frame
+#' for analysis. Useful for sensitivity analyses or when working with a subset of the data.
+#' Default is NULL, which means the whole dataset will be used.
+#'
+#' @return mr_res A list or data frame containing the results of the IVW analysis.
+#' This will include estimates of causal effects, confidence intervals, and other relevant
+#' statistical measures. (Note: Update this description based on the actual structure and
+#' content of the return value.)
+#'
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' data_sample <- data.frame( ... ) # example data structure
+#' result <- ivw_Speed(data_sample, prop_var_explained = TRUE, sample = NULL)
+#' }
 ivw_Speed <- function(dat,
                       prop_var_explained = T,
                       sample=NULL) {
@@ -35,16 +52,34 @@ ivw_Speed <- function(dat,
 
   return(mr_res)
 }
-#' Title mr_Speed
+#' Perform Speedy Mendelian Randomization Analysis
 #'
-#' @param dat
-#' @param prop_var_explained
-#' @param sample
+#' This function conducts a rapid Mendelian Randomization (MR) analysis on the provided dataset.
+#' MR is a method of using genetic variations to determine causal relationships between exposures and outcomes.
 #'
-#' @return
+#' @param dat A data frame containing the necessary variables for the MR analysis.
+#' It should at least have columns for SNP, exposure effect size, exposure standard error,
+#' outcome effect size, and outcome standard error. Default is `harmonised_dat`.
+#'
+#' @param prop_var_explained A logical value indicating whether to compute the proportion
+#' of variance explained by the instrumental variables. Default is TRUE.
+#'
+#' @param sample An optional sample data or criteria to subset the main `dat` data frame
+#' for analysis. Useful for sensitivity analyses or when working with a subset of the data.
+#' Default is NULL, which means the whole dataset will be used.
+#'
+#' @return mr_res A list or data frame containing the results of the MR analysis.
+#' This will include estimates of causal effects, confidence intervals, and other relevant
+#' statistical measures. (Note: Update this description based on the actual structure and
+#' content of the return value.)
+#'
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' harmonised_data <- data.frame( ... ) # example data structure
+#' result <- mr_Speed(harmonised_data, prop_var_explained = TRUE, sample = NULL)
+#' }
 mr_Speed <- function(dat = harmonised_dat, prop_var_explained = T,sample=NULL)
 {
   mr_res <- mr(dat)
@@ -73,16 +108,31 @@ Presso_Speed <- function(dat) {
   return(res)
 }
 
-#' Title FDR_correct_immune
+#' Perform FDR Correction on Immune Data
 #'
-#' @param dat
-#' @param sample
-#' @param outcome_id
+#' This function applies the False Discovery Rate (FDR) correction on immune-related data.
+#' FDR correction is often used in hypothesis testing to correct for the problem of multiple comparisons.
 #'
-#' @return
+#' @param dat A data frame containing the test results that need correction.
+#' Default is `iddf`.
+#'
+#' @param sample An integer representing the sample size of the dataset.
+#' This parameter can influence the correction process. Default is `731`.
+#'
+#' @param outcome_id A unique identifier for the outcome variable in the `dat` dataset.
+#' This is used to specify which outcome the FDR correction should be applied to.
+#'
+#' @return fdr_res A data frame or list containing the FDR-corrected p-values and any
+#' other relevant corrected results. (Note: Update this description based on the actual structure
+#' and content of the return value.)
+#'
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' immune_data <- data.frame( ... ) # example data structure
+#' corrected_results <- FDR_correct_immune(immune_data, sample = 731, outcome_id = "example_id")
+#' }
 FDR_correct_immune <- function(dat=iddf,sample=731,outcome_id){
   if(is.null(dat$pval[1])==T || is.na(dat$pval[1])==T){print("数据不包含pvalue，无法计算FDR")
     return(dat)
@@ -107,18 +157,31 @@ FDR_correct_immune <- function(dat=iddf,sample=731,outcome_id){
     return(data_sorted)
   }
 }
-#' Title p.adjust
+#' Adjust p-values for Multiple Comparisons
 #'
-#' @param p
-#' @param method
-#' @param n
+#' This function adjusts p-values for multiple comparisons using a specified method.
+#' Adjusting for multiple comparisons can control the family-wise error rate or the false discovery rate.
 #'
-#' @return
+#' @param p A numeric vector of raw p-values that you want to adjust.
+#'
+#' @param method A character string indicating the adjustment method to be used.
+#' Possible values include all methods available in `p.adjust.methods`.
+#' The default is to use all methods provided by `p.adjust.methods`.
+#'
+#' @param n An integer specifying the number of comparisons,
+#' typically the number of p-values or the length of the `p` vector. Default is the length of `p`.
+#'
+#' @return adjusted_p A numeric vector of adjusted p-values. (Note: Update this description
+#' based on the actual structure and content of the return value.)
+#'
 #' @export
 #'
 #' @examples
-p.adjust <- function(p, method = p.adjust.methods, n = length(p))
-{
+#' \dontrun{
+#' raw_p_values <- c(0.01, 0.05, 0.1)
+#' adjusted_values <- p.adjust(raw_p_values, method = "holm")
+#' }
+p.adjust <- function(p, method = p.adjust.methods, n = length(p)){
   ## Methods 'Hommel', 'BH', 'BY' and speed improvements
   ## contributed by Gordon Smyth
   method <- match.arg(method)
@@ -195,7 +258,9 @@ p.adjust <- function(p, method = p.adjust.methods, n = length(p))
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' get_tsmr(immu_cell_f_select, finn_r_dir, cores = 64)
+#' }
 #'
 get_tsmr <- function(immu_cell_f_select,
                      finn_r_dir,
@@ -226,7 +291,7 @@ get_tsmr <- function(immu_cell_f_select,
     cat("harmonise data for ",outcome_name,"\n")
 
     # Harmonise data
-    dat<-harmonise_data(exposure_dat=exposure_dat, outcome_dat=outcome_dat)
+    dat<-TwoSampleMR::harmonise_data(exposure_dat=exposure_dat, outcome_dat=outcome_dat)
     har_true=dat[dat$mr_keep=="TRUE",]
     write.csv(har_true, file=paste0(outcome_name,"/SNP.csv"), row.names=F)
     save(har_true,file = paste0(outcome_name,"/SNP.rda"))

@@ -7,7 +7,9 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' analyze_outcome_immune(outcome_id = "some_id", max_retries = 50)
+#' }
 
 analyze_outcome_immune <- function(outcome_id,max_retries=50) {
   cat("!!Immune cells: Analyzing outcome ", outcome_id, "\n")
@@ -106,6 +108,7 @@ analyze_outcome_immune <- function(outcome_id,max_retries=50) {
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' library(dplyr)
 #' library(TwoSampleMR)
 #' #https://gwas.mrcieu.ac.uk/datasets/
@@ -117,6 +120,7 @@ analyze_outcome_immune <- function(outcome_id,max_retries=50) {
 #' immune_total_check(exposure_id=exposure_id,
 #' outcome_name=outcome_name,
 #' outcome_source=outcome_source)
+#' }
 immune_total_check<-function(exposure_id,
                              outcome_name,
                              outcome_source){
