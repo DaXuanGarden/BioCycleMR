@@ -24,7 +24,7 @@ get_finn <- function(finn_dir,
 
     finn <- data.table::fread(file = trait, data.table = F)
 
-    finndata <- format_data(finn, type = 'outcome', snp_col = "rsids", beta_col = "beta", se_col = "sebeta",
+    finndata <- TwoSampleMR::format_data(finn, type = 'outcome', snp_col = "rsids", beta_col = "beta", se_col = "sebeta",
                             eaf_col = "af_alt", effect_allele_col = "alt", other_allele_col = "ref",
                             pval_col = "pval", gene_col = "nearest_genes", chr_col = "#chrom",
                             pos_col = "pos")
@@ -48,13 +48,7 @@ get_finn <- function(finn_dir,
   parallel::mclapply(finn_list, process_finn, mc.cores = cores)
 
 }
-create_ids <- function(x)
-{
-  a <- as.factor(x)
-  levels(a) <- random_string(length(levels(a)))
-  a <- as.character(a)
-  return(a)
-}
+
 
 # Usage Instructions:
 # 1. Ensure you have the required libraries (`data.table` and `parallel`) installed.
