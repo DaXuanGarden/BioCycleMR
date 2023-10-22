@@ -36,6 +36,7 @@ get_immc <- function(use_preprocessed = TRUE,
   if (use_preprocessed) {
     # Load preprocessed data
     #load(system.file("data", "dx_immu_cell_raw_df.rda", package = "BioCycleMR"))
+    data("dx_immu_cell_raw_df")
     preprocessed_data <- immu_cell_raw
     return(preprocessed_data)
   }
@@ -44,6 +45,7 @@ get_immc <- function(use_preprocessed = TRUE,
   # Load the imc731id from the data in the package
   # which contain the detail of immune trait
   #load(system.file("data", "imc731id_data.rda", package = "BioCycleMR"))
+  data("imc731id_data")
     online_id <- function(id, p1 = 1e-05, p2 = 5e-08, count_try_max = 50, r2 = 0.001, kb = 10000) {
     immu.cell <- data.frame()
     count_try <- 0

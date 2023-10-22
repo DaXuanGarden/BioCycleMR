@@ -11,7 +11,7 @@
 get_gwas_id <- function(input) {
   # Load the built-in GWAS dataset list
   #load(system.file("data", "available_datasets.rda", package = "BioCycleMR"))
-
+  data("available_datasets")
   # Determine whether the input is a keyword or an outcome_id
   if (any(input == available_datasets$id)) { # input is outcome_id
     matched_datasets <- available_datasets[available_datasets$id == input, ]
