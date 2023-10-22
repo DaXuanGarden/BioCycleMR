@@ -21,7 +21,8 @@ get_finn <- function(finn_dir,
 
   # Define the process_finn function
   process_finn <- function(trait) {
-    finn <- fread(file = trait, data.table = F)
+
+    finn <- data.table::fread(file = trait, data.table = F)
 
     finndata <- format_data(finn, type = 'outcome', snp_col = "rsids", beta_col = "beta", se_col = "sebeta",
                             eaf_col = "af_alt", effect_allele_col = "alt", other_allele_col = "ref",
@@ -42,9 +43,10 @@ get_finn <- function(finn_dir,
     save(finndata, file = paste0(save_dir, "/", "finndataR9_", trait_file_name, ".rda"))
     cat("Finished:", trait_file_name, "\n")
   }
-
-  finn_list <- list.files(finn_dir, full.names = TRUE, recursive = FALSE)
+  finn_list <- list.files(finn_dir, pattern = "\\.gz$", full.names = TRUE, recursive = FALSE)
+  print(finn_list)  # Add this line
   parallel::mclapply(finn_list, process_finn, mc.cores = cores)
+
 }
 
 # Usage Instructions:
