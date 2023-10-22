@@ -4,7 +4,9 @@
 #' @param type The type of GWAS study, "exposure" or "outcome"
 #' @return Export the converted data as a CSV file
 #' @examples
+#' \dontrun{
 #' get_local("ieu-a-2.vcf.gz", "exposure")
+#' }
 #' @export
 get_local <- function(vcf_file, type) {
   # Downloaded VCF file should be placed into the working path in advance

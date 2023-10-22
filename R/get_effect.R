@@ -13,8 +13,9 @@
 #' @return A data frame containing the effect size estimates for all .rda files.
 #'
 #' @examples
+#' \dontrun{
 #' get_effect("~/path_to_directory", immune_ref_data)
-#'
+#'}
 #' @export
 get_effect <- function(directory, immune_ref) {
   finn_list <- list.files(directory, full.names = TRUE, recursive = FALSE)
@@ -29,16 +30,31 @@ get_effect <- function(directory, immune_ref) {
   process_outcomes(finn_name_list, immune_ref)
 }
 
-#' Title
+#' Process Outcomes from Finn Name List and Immune References
 #'
-#' @param finn_name_list
-#' @param immune_ref
+#' This function processes the outcomes by using the provided `finn_name_list` and `immune_ref`
+#' parameters. It is designed to facilitate the analysis and transformation of outcomes
+#' based on specific criteria or references.
 #'
-#' @return
+#' @param finn_name_list A character vector containing the list of Finn names
+#' to be processed. Each name in the list should correspond to a specific outcome
+#' that is to be processed.
+#'
+#' @param immune_ref A data frame or similar structure containing the immune reference
+#' data. This reference data is used to map and transform the outcomes from
+#' `finn_name_list` during processing.
+#'
+#' @return A processed list or data frame (you should specify what the function returns
+#' based on its logic, e.g., "A data frame containing the processed outcomes.")
+#'
 #' @export
 #'
 #' @examples
-process_outcomes <- function(finn_name_list, immune_ref) {
+#' \dontrun{
+#' result <- process_outcomes(sample_finn_names, sample_immune_ref)
+#' }
+process_outcomes <- function(finn_name_list, immune_ref)
+{
   effect_list = list()
 
   for (i in seq_along(finn_name_list)) {

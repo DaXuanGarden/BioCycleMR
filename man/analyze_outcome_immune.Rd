@@ -18,5 +18,7 @@ result The result of the analysis
 Title: Immunce cells as exposure
 }
 \examples{
+\dontrun{
 analyze_outcome_immune(outcome_id = "some_id", max_retries = 50)
+}
 }

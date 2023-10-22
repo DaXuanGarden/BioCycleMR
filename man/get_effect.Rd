@@ -24,6 +24,7 @@ subdirectory and written to a .csv file. The function returns the effect size
 estimates for all .rda files as a data frame.
 }
 \examples{
+\dontrun{
 get_effect("~/path_to_directory", immune_ref_data)
-
+}
 }

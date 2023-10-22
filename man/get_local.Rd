@@ -18,5 +18,7 @@ Export the converted data as a CSV file
 Convert local VCF file to Two-Sample MR input format and export it as a CSV file
 }
 \examples{
+\dontrun{
 get_local("ieu-a-2.vcf.gz", "exposure")
+}
 }

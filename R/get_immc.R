@@ -35,16 +35,16 @@ get_immc <- function(use_preprocessed = TRUE,
 
   if (use_preprocessed) {
     # Load preprocessed data
-    preprocessed_data <- readRDS(system.file("data", "dx_immu_cell_raw_df.rda", package = "BioCycleMR"))
+    #load(system.file("data", "dx_immu_cell_raw_df.rda", package = "BioCycleMR"))
+    preprocessed_data <- immu_cell_raw
     return(preprocessed_data)
   }
 
 
   # Load the imc731id from the data in the package
   # which contain the detail of immune trait
-  imc731id <- readRDS(system.file("data", "imc731id_data.rda", package = "BioCycleMR"))
-
-  online_id <- function(id, p1 = 1e-05, p2 = 5e-08, count_try_max = 50, r2 = 0.001, kb = 10000) {
+  #load(system.file("data", "imc731id_data.rda", package = "BioCycleMR"))
+    online_id <- function(id, p1 = 1e-05, p2 = 5e-08, count_try_max = 50, r2 = 0.001, kb = 10000) {
     immu.cell <- data.frame()
     count_try <- 0
 
@@ -53,7 +53,7 @@ get_immc <- function(use_preprocessed = TRUE,
 
       try({
         cat(count_try, "try", id, "\n")
-        immu.cell <- extract_instruments(id, p1 = p1, p2 = p2, r2 = r2, kb = kb)
+        immu.cell <- TwoSampleMR::extract_instruments(id, p1 = p1, p2 = p2, r2 = r2, kb = kb)
       })
 
       if ((exists("immu.cell") && !is.null(immu.cell) && nrow(immu.cell) > 0) || count_try == count_try_max) {
