@@ -4,7 +4,7 @@
 \alias{get_finn}
 \title{Harmonise and process FinnGen R9 data.}
 \usage{
-get_finn(finn_dir, save_dir = "finn_r", cores = 30)
+get_finn(finn_dir = "finn", save_dir = "finn_r", cores = 30)
 }
 \arguments{
 \item{finn_dir}{The directory where the FinnGen data files are located.}
