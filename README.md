@@ -140,7 +140,7 @@ Open communication channels and collaborations are the lifeblood of `BioCycleMR`
 
 # Creators😊
 
--   **Xuanyu Wang**: Xuanyu Wang, a 2021 undergraduate student from College of Traditional Chinese Medicine, Tianjin University of Traditional Chinese Medicine. Research Interests in Traditional Chinese Medicine with a special focus on Cardiology and Cardiovascular diseases.
+-   **Xuanyu Wang**: A 2021 undergraduate student from College of Traditional Chinese Medicine, Tianjin University of Traditional Chinese Medicine. Research Interests in Traditional Chinese Medicine with a special focus on Cardiology and Cardiovascular diseases.
 
 -   **Yangyang Zhang**: A 2021 undergraduate student from Shanghai Medical College, Fudan University. Research Interests include Obstetrician-gynecology, and reproductive medicine.
 
