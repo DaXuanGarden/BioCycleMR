@@ -1,4 +1,4 @@
-![](https://github.com/DaXuanGarden/BioCycleMR/assets/140375963/f421447f-ccf5-4b3f-a384-b5ea677083a3){width="423"}
+![](https://github.com/DaXuanGarden/BioCycleMR/assets/140375963/f421447f-ccf5-4b3f-a384-b5ea677083a3)
 
 # Introduction🎯
 
@@ -23,7 +23,7 @@ print(results)
 
 # Detailed Function Descriptions📕
 
-![](README/BioCycleMR_En.png){width="518"}
+![](README/BioCycleMR_En.png)
 
 ## get_finn
 
