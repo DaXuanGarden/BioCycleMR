@@ -25,6 +25,38 @@ print(results)
 
 ### Detailed Function Descriptions
 
+### get_finn
+
+#### Usage:
+### Example:
+
+To process FINN data from the "finn" directory and save the results to "finn_r" using `64cores`:
+
+```R
+library(BioCycleMR)
+get_finn(finn_dir = "finn", save_dir = "finn_r", cores = 64)
+```
+
+#### Parameters:
+
+1. `finn_dir` (default: "finn"): 
+   - Description: Specifies the directory where the raw FINN data files are located.
+   - Type: String
+
+2. `save_dir` (default: "finn_r"): 
+   - Description: Directory where the processed results should be saved.
+   - Type: String
+
+3. `cores` (default: 64): 
+   - Description: Number of cores to be used for parallel processing. 
+   - Type: Integer
+
+
+
+---
+
+Please note that this is a fictional guide based on the function details you provided. For real-world usage and accurate documentation, consult the actual package's documentation or its GitHub repository.
+
 #### Immune cells
 
 ![](README/BioCycleMR_immc_En.png)
