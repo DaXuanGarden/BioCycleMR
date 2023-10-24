@@ -48,10 +48,6 @@ get_finn(finn_dir = "finn", save_dir = "finn_r", cores = 64)
     -   Description: Number of cores to be used for parallel processing.
     -   Type: Integer
 
-------------------------------------------------------------------------
-
-Please note that this is a fictional guide based on the function details you provided. For real-world usage and accurate documentation, consult the actual package's documentation or its GitHub repository.
-
 ## Immune cells
 
 ![](README/BioCycleMR_immc_En.png)
