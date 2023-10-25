@@ -50,7 +50,7 @@ get_finn <- function(finn_dir = "finn", save_dir = "finn_r", cores = 30) {
     # 5. 更新finndata的outcome列
     outcome <- trait_row$name
     finndata$outcome <- outcome
-    ##赋值id.exposure😊
+    ##赋值id.exposure
     finndata$id.outcome <- finndata$outcome
     # 6. 保存数据
     save(finndata, file = paste0(save_dir, "/", "finndataR9_", trait_basename, ".rda"))
