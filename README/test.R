@@ -73,4 +73,27 @@ load(system.file("data", "imc731id_data.rda", package = "BioCycleMR"))
 
 # 加载immunce.rda
 load(system.file("data", "immunce.rda", package = "BioCycleMR"))
+head(immu_cell_raw[[1]])
+# 检查pval.exposure列的数据类型
+column_data_type <- class(immu_cell_raw[[1]]$pval.exposure)
 
+# 打印数据类型
+print(column_data_type)
+# 检查pval.exposure列的数据类型
+column_data_type <- class(meta_list[[1]]$pval.exposure)
+
+# 打印数据类型
+print(column_data_type)
+# 检查pval.exposure列的数据类型
+column_data_type <- class(meta_f_select[[1]]$pval.exposure)
+
+# 打印数据类型
+print(column_data_type)
+###看看免疫细胞
+#load exposure data
+library(TwoSampleMR)
+expo_rt<-extract_instruments(outcome="ebi-a-GCST90001391",p1 = 5e-6,
+                             clump = T,
+                             p2 = 5e-6,
+                             r2 = 0.001,
+                             kb = 10000)
